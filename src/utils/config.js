@@ -1,4 +1,5 @@
 
 export const endPoints = {
-    latestCurrency: '/latest'
+    latestCurrency: '/latest',
+    posts: '/posts'
 }
