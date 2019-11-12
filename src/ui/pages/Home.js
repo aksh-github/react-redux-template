@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 
 import withHoc from '../core/hoc';
 
-import { fetchLatestCurrency } from '../../apis/fetchCurrency';
+import { fetchLatestCurrency, fetchCurrencyService } from '../../redux/action';
+import { postTodoService } from '../../redux/action2';
+
 
 const Currency = ({ currencyArr }) =>
 {
@@ -25,12 +27,32 @@ const Currency = ({ currencyArr }) =>
 class Home extends React.Component
 {
 
-    handleClick = () =>
+    getCurrency = () =>
     {
-        this.props.dispatch(fetchLatestCurrency())
+        // this.props.dispatch(fetchLatestCurrency())
+        //     .then((resp) =>
+        //     {
+        //         // console.log(resp)
+        //     })
+
+        this.props.dispatch(fetchCurrencyService())
             .then((resp) =>
             {
-                // console.log(resp)
+                console.log(resp)
+            })
+    }
+
+    postTodo = () =>
+    {
+
+        this.props.dispatch(postTodoService({
+            "title": "foo",
+            "body": "bar",
+            "userId": 1
+        }))
+            .then((resp) =>
+            {
+                console.log(resp)
             })
     }
 
@@ -42,7 +64,8 @@ class Home extends React.Component
 
         return <div>
             <h2>Home {homeState.name}</h2>
-            <p><button onClick={this.handleClick}>Get remote data</button></p>
+            <p><button onClick={this.getCurrency}>Get remote data</button></p>
+            <p><button onClick={this.postTodo}>Post Todo</button></p>
 
             <Currency currencyArr={homeState.currency.value} />
 
