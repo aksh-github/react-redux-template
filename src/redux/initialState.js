@@ -1,5 +1,11 @@
 
 export const commonState = {
+    //this is sample for POST reqst
+    currentTodo: {
+        loading: false,
+        value: null,
+        error: null
+    }
 };
 
 
