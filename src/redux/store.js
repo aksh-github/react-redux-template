@@ -44,6 +44,7 @@ const ServiceMiddleware = store => next => async action =>
         before,     //before api call
         transform,  //should return something
         onSuccess,
+        errorTransform,
         onFailure,
         after       //after success or fail api call
     } = action.payload.handlers;
@@ -78,7 +79,10 @@ const ServiceMiddleware = store => next => async action =>
     }
     catch (err)
     {
-        dispatch(onFailure(err));
+        if (errorTransform instanceof Function)
+            dispatch(onFailure(errorTransform(err)));
+        else
+            dispatch(onFailure(err));
 
         if (after instanceof Function)
             after(err);
