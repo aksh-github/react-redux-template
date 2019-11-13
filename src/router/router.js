@@ -3,8 +3,13 @@ import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import Home from '../ui/pages/Home';
-import About from '../ui/pages/About';
-import Users from '../ui/pages/Users';
+
+//foll 2 imported dynamically
+// import About from '../ui/pages/About';
+//import Users from '../ui/pages/Users';
+
+import { Lazy } from '../ui/common/Lazy';
+import ErrorBoundary from '../ui/common/ErrorBoundary';
 
 const Routes = () =>
 {
@@ -14,25 +19,29 @@ const Routes = () =>
             {
                 console.log(props);
 
-                // const Compo = Dynamic('Home');
-
-                return <Home fromRoute={'fromRoute'} />
+                return <ErrorBoundary>
+                    <Home fromRoute={'fromRoute'} />
+                </ErrorBoundary>
             }} />
             <Route path="/about" render={(props) =>
             {
                 console.log(props);
 
-                // const Compo = Dynamic('About')
+                const About = Lazy('page', 'About');
 
-                return <About />
+                return <ErrorBoundary>
+                    <About />
+                </ErrorBoundary>
             }} />
             <Route path="/users" render={(props) =>
             {
                 console.log(props);
 
-                // const Compo = Dynamic('Users');
+                const Users = Lazy('page', 'Users');
 
-                return <Users />
+                return <ErrorBoundary>
+                    <Users />
+                </ErrorBoundary>
             }} />
         </Switch>
     </Suspense>
