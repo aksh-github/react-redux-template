@@ -6,34 +6,47 @@ import logo from './logo.svg';
 import './App.css';
 
 import Routes from './router/router';
+import AppContext from './utils/context';
+import * as Config from './utils/config';
+
 
 const Header = () =>
 {
-  return <nav style={{ 'background': '#fff' }} >
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/about">About</Link>
-      </li>
-      <li>
-        <Link to="/users">Users</Link>
-      </li>
-    </ul>
-  </nav>
+    return <AppContext.Consumer>
+        {
+            (config) =>
+            {
+                const { routes } = config;
+
+                return <nav style={{ 'background': '#fff' }} >
+                    <ul>
+                        <li>
+                            <Link to={routes.home.path}>Home</Link>
+                        </li>
+                        <li>
+                            <Link to={routes.about.path}>About</Link>
+                        </li>
+                        <li>
+                            <Link to={routes.users.path}>Users</Link>
+                        </li>
+                    </ul>
+                </nav>
+            }
+
+        }
+    </AppContext.Consumer>
 }
 
 function App()
 {
-  return <div className="app">
-    <Router>
-      <React.Fragment>
-        <Header />
-        <Routes />
-      </React.Fragment>
-    </Router>
-  </div>
+    return <div className="app">
+        <Router>
+            <AppContext.Provider value={{ ...Config }}>
+                <Header />
+                <Routes />
+            </AppContext.Provider>
+        </Router>
+    </div>
 }
 
 export default App;

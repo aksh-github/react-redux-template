@@ -10,40 +10,51 @@ import Home from '../ui/pages/Home';
 
 import { Lazy } from '../ui/common/Lazy';
 import ErrorBoundary from '../ui/common/ErrorBoundary';
+import AppContext from '../utils/context';
+
 
 const Routes = () =>
 {
     return <Suspense fallback={<div className="loading-compo">Loading component...</div>}>
-        <Switch>
-            <Route path="/" exact render={(props) =>
+        <AppContext.Consumer>
             {
-                // console.log(props);
+                (config) =>
+                {
+                    const { routes } = config;
+                    return <Switch>
+                        <Route path={routes.home.path} exact render={(props) =>
+                        {
+                            // console.log(props);
 
-                return <ErrorBoundary>
-                    <Home fromRoute={'fromRoute'} />
-                </ErrorBoundary>
-            }} />
-            <Route path="/about" render={(props) =>
-            {
-                // console.log(props);
+                            return <ErrorBoundary>
+                                <Home fromRoute={'fromRoute'} />
+                            </ErrorBoundary>
+                        }} />
+                        <Route path={routes.about.path} render={(props) =>
+                        {
+                            // console.log(props);
 
-                const About = Lazy('page', 'About');
+                            const About = Lazy('page', 'About');
 
-                return <ErrorBoundary>
-                    <About />
-                </ErrorBoundary>
-            }} />
-            <Route path="/users" render={(props) =>
-            {
-                // console.log(props);
+                            return <ErrorBoundary>
+                                <About />
+                            </ErrorBoundary>
+                        }} />
+                        <Route path={routes.users.path} render={(props) =>
+                        {
+                            // console.log(props);
 
-                const Users = Lazy('page', 'Users');
+                            const Users = Lazy('page', 'Users');
 
-                return <ErrorBoundary>
-                    <Users />
-                </ErrorBoundary>
-            }} />
-        </Switch>
+                            return <ErrorBoundary>
+                                <Users />
+                            </ErrorBoundary>
+                        }} />
+
+                    </Switch>
+                }
+            }
+        </AppContext.Consumer>
     </Suspense>
 }
 
