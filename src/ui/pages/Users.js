@@ -2,7 +2,7 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
 
-import withHoc from '../core/hoc';
+import withHoc from '../utils/hoc';
 
 class Users extends React.Component
 {
