@@ -40,14 +40,18 @@ export const Lazy = (type, compoName) =>
 
     switch (type)
     {
-        case 'common':
-            return React.lazy(() => retryLoad(() => import('../common/' + compoName)))
+        // case 'core':
+        //     return React.lazy(() => retryLoad(() => import('../core/' + compoName)))
+
+        // case 'common':
+        //     return React.lazy(() => retryLoad(() => import('../common/' + compoName)))
 
         case 'page':
             return React.lazy(() => retryLoad(() => import('../pages/' + compoName)))
 
         default:
-            return null;
+            //here compoName need to be full path
+            return React.lazy(() => retryLoad(() => import(compoName)));
     }
 
 }//()

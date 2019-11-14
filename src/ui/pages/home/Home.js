@@ -4,27 +4,18 @@ import React from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 
-import withHoc from '../core/hoc';
+import withHoc from '../../utils/hoc';
+import { Lazy } from '../../utils/Lazy';
 
-import { fetchLatestCurrency, fetchCurrencyService } from '../../redux/action';
-import { postTodoService } from '../../redux/action2';
 
+import { fetchLatestCurrency, fetchCurrencyService } from '../../../redux/action';
+import { postTodoService } from '../../../redux/action2';
+
+//import Currency from './comps/Currency';
 
 class Home extends React.Component
 {
-    static Currency = ({ currencyArr }) =>
-    {
-
-        const iterator = (ele) =>
-        {
-            // console.log(Object.keys(ele))
-            const key = Object.keys(ele)[0];
-
-            return <div key={key}>{key}: {ele[key]}</div>
-        }
-
-        return currencyArr.map(iterator)
-    }
+    static Currency = Lazy('page', 'home/comps/Currency');
 
     getCurrency = () =>
     {
@@ -57,18 +48,15 @@ class Home extends React.Component
 
     render()
     {
-        const { homeState } = this.props;
+        const { currency, name } = this.props;
 
-        // console.log(homeState)
 
         return <div>
-            <h2>Home {homeState.name}</h2>
+            <h2>Home {name}</h2>
             <p><button onClick={this.getCurrency}>Get remote data</button></p>
             <p><button onClick={this.postTodo}>Post Todo</button></p>
 
-            <Home.Currency currencyArr={homeState.currency.value} />
-
-
+            <Home.Currency currencyArr={currency.value} />
         </div>
     }
 }
@@ -81,7 +69,8 @@ const func = (prop) =>
 }
 
 const mapStateToProps = state => ({
-    homeState: state.homeReducer
+    currency: state.homeReducer.currency,
+    name: state.homeReducer.name
 });
 
 const mapDispatchToProps = (dispatch) =>

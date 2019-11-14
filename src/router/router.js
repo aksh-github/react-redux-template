@@ -2,16 +2,15 @@
 import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 
-import Home from '../ui/pages/Home';
+import Home from '../ui/pages/home/Home';
 
 //foll 2 imported dynamically
 // import About from '../ui/pages/About';
 //import Users from '../ui/pages/Users';
 
-import { Lazy } from '../ui/common/Lazy';
-import ErrorBoundary from '../ui/common/ErrorBoundary';
+import { Lazy } from '../ui/utils/Lazy';
+import ErrorBoundary from '../ui/utils/ErrorBoundary';
 import AppContext from '../utils/context';
-
 
 const Routes = () =>
 {
