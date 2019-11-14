@@ -16,6 +16,8 @@ const withHoc = (moreProps, moreFunction) => (WrappedComponent) =>
         {
             super(props);
 
+            console.log(props)
+
             //can use moreProps, moreFunction here
 
             if (moreFunction instanceof Function)

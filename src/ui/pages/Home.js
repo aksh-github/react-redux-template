@@ -10,22 +10,21 @@ import { fetchLatestCurrency, fetchCurrencyService } from '../../redux/action';
 import { postTodoService } from '../../redux/action2';
 
 
-const Currency = ({ currencyArr }) =>
-{
-
-    const iterator = (ele) =>
-    {
-        // console.log(Object.keys(ele))
-        const key = Object.keys(ele)[0];
-
-        return <div key={key}>{key}: {ele[key]}</div>
-    }
-
-    return currencyArr.map(iterator)
-}
-
 class Home extends React.Component
 {
+    static Currency = ({ currencyArr }) =>
+    {
+
+        const iterator = (ele) =>
+        {
+            // console.log(Object.keys(ele))
+            const key = Object.keys(ele)[0];
+
+            return <div key={key}>{key}: {ele[key]}</div>
+        }
+
+        return currencyArr.map(iterator)
+    }
 
     getCurrency = () =>
     {
@@ -35,7 +34,7 @@ class Home extends React.Component
         //         // console.log(resp)
         //     })
 
-        this.props.dispatch(fetchCurrencyService())
+        this.props.fetchCurrencyService()
             .then((resp) =>
             {
                 console.log(resp)
@@ -45,11 +44,11 @@ class Home extends React.Component
     postTodo = () =>
     {
 
-        this.props.dispatch(postTodoService({
+        this.props.postTodoService({
             "title": "foo",
             "body": "bar",
             "userId": 1
-        }))
+        })
             .then((resp) =>
             {
                 console.log(resp)
@@ -67,7 +66,7 @@ class Home extends React.Component
             <p><button onClick={this.getCurrency}>Get remote data</button></p>
             <p><button onClick={this.postTodo}>Post Todo</button></p>
 
-            <Currency currencyArr={homeState.currency.value} />
+            <Home.Currency currencyArr={homeState.currency.value} />
 
 
         </div>
@@ -85,4 +84,13 @@ const mapStateToProps = state => ({
     homeState: state.homeReducer
 });
 
-export default withHoc(prop1, func)(withRouter(connect(mapStateToProps)(Home)));
+const mapDispatchToProps = (dispatch) =>
+{
+    return {
+        fetchCurrencyService: () => dispatch(fetchCurrencyService()),
+        postTodoService: (todoObj) => dispatch(postTodoService(todoObj)),
+    }
+}
+
+//export default withHoc(prop1, func)(withRouter(connect(mapStateToProps)(Home)));
+export default withRouter(withHoc(prop1, func)(connect(mapStateToProps, mapDispatchToProps)(Home)));

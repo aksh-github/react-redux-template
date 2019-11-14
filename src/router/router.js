@@ -17,7 +17,7 @@ const Routes = () =>
         <Switch>
             <Route path="/" exact render={(props) =>
             {
-                console.log(props);
+                // console.log(props);
 
                 return <ErrorBoundary>
                     <Home fromRoute={'fromRoute'} />
@@ -25,7 +25,7 @@ const Routes = () =>
             }} />
             <Route path="/about" render={(props) =>
             {
-                console.log(props);
+                // console.log(props);
 
                 const About = Lazy('page', 'About');
 
@@ -35,7 +35,7 @@ const Routes = () =>
             }} />
             <Route path="/users" render={(props) =>
             {
-                console.log(props);
+                // console.log(props);
 
                 const Users = Lazy('page', 'Users');
 
