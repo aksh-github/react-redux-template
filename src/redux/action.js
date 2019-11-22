@@ -120,6 +120,7 @@ export const fetchCurrencyService = someApiRelated => (dispatch, getState) =>
             api: {
                 url: 'https://api.exchangeratesapi.io' + endPoints.latestCurrency,
                 method: 'GET',
+                // body: {}
             },
             handlers: {
                 before: currencyFetch,
