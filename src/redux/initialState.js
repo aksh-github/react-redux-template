@@ -5,7 +5,13 @@ export const commonState = {
         loading: false,
         value: null,
         error: null
-    }
+    },
+    todos: {
+        loading: false,
+        value: null,
+        error: null
+    },
+    apiCounter: 0
 };
 
 
