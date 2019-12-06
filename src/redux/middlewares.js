@@ -50,7 +50,8 @@ export const ServiceMiddleware = store => next => async action =>
 
     let _result = null;
 
-    const { url, body, headers, method } = action.payload.api;
+    const { url, headers, method } = action.payload.api;
+    let { body } = action.payload.api;
 
     const {
         before,     //before api call
@@ -69,6 +70,13 @@ export const ServiceMiddleware = store => next => async action =>
 
     try
     {
+
+        if (method === 'GET' || !method)
+        {
+            body = undefined;
+            console.log('Since method is get, ignoring the body');
+        }
+
         _result = await fetch(url, {
             method: method || 'GET',
             body: JSON.stringify(body),
@@ -81,7 +89,7 @@ export const ServiceMiddleware = store => next => async action =>
         //1. step 1: convert to json. If response is blank warn on console 
         // result = await callToJson(result);
 
-        let result = await callToJson(_result)
+        let result = await callToJson(_result), transformedResult = null;
 
         //2. step 2: call validate when provided to decide to dispatch success or fail action
         const validResponseFlag = callValidator(result, responseValidator)
@@ -91,16 +99,22 @@ export const ServiceMiddleware = store => next => async action =>
 
         //3. step 3: call transform when provided 
         if (validResponseFlag)
-            result = callTransform(result, transform);
+            transformedResult = callTransform(result, transform);
 
         // console.log(result, validResponseFlag)
 
         //4. dispatch success or fail based on response of validator
 
         if (validResponseFlag)
-            dispatch(onSuccess(result))
+        {
+            if (onSuccess instanceof Function)
+                dispatch(onSuccess(transformedResult))
+        }
         else
-            dispatch(onFailure(result));
+        {
+            if (onFailure instanceof Function)
+                dispatch(onFailure(result));
+        }
 
         if (after instanceof Function)
             after(result);
@@ -115,9 +129,15 @@ export const ServiceMiddleware = store => next => async action =>
         console.error(err);
 
         if (errorTransform instanceof Function)
-            dispatch(onFailure(errorTransform(err)));
+        {
+            if (onFailure instanceof Function)
+                dispatch(onFailure(errorTransform(err)));
+        }
         else
-            dispatch(onFailure(err));
+        {
+            if (onFailure instanceof Function)
+                dispatch(onFailure(err));
+        }
 
         if (after instanceof Function)
             after(err);
