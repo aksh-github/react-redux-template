@@ -1,47 +1,63 @@
 
-
 import { commonState } from './initialState';
-import { POST_TODO, POST_TODO_FAIL, POST_TODO_SUCCESS } from '../redux/action2';
+import { createReducer } from './redux-utils';
 
+import { incrementType, decrementType, postTodoType, getTodoType } from './actionTypes';
 
-const updateCurrentTodo = (state, action) =>
+// console.log(postTodoType)
+
+const postTodoReducer = createReducer(postTodoType)
+const getTodoReducer = createReducer(getTodoType)
+
+// console.log(postTodoReducer)
+
+// reducer as object literal
+
+const updateCounter = (state, action) =>
 {
-    switch (action.type)
-    {
-        case POST_TODO:
-            return {
-                ...state,
-                loading: action.payload.loading,
-                error: action.payload.error
-            }
-        case POST_TODO_FAIL:
-            return {
-                ...state,
-                loading: action.payload.loading,
-                error: action.payload.error
-            }
-        case POST_TODO_SUCCESS:
-            return {
-                ...state,
-                loading: action.payload.loading,
-                error: action.payload.error,
-                value: action.payload.value,
-            }
-        default:
-            return state;
+    console.log(incrementType)
+
+    const actions = {
+        [incrementType]: (state, action) =>
+        {
+            return state + action.payload.value
+        },
+
+        [decrementType]: (state, action) =>
+        {
+            return state + action.payload.value
+        },
+        default: (state) => state
     }
+
+    return actions[action.type || 'default'](state, action)
+
 }
+
 
 export default (state = commonState, action) =>
 {
     switch (action.type)
     {
-        case POST_TODO:
-        case POST_TODO_FAIL:
-        case POST_TODO_SUCCESS:
+        case postTodoType.base:
+        case postTodoType.fail:
+        case postTodoType.success:
             return {
                 ...state,
-                currentTodo: updateCurrentTodo(state.currentTodo, action)
+                currentTodo: postTodoReducer(state.currentTodo, action)    //updateCurrentTodo(state.currentTodo, action)
+            }
+        case getTodoType.base:
+        case getTodoType.fail:
+        case getTodoType.success:
+            return {
+                ...state,
+                todos: getTodoReducer(state.todos, action)    //updateCurrentTodo(state.currentTodo, action)
+            }
+        case incrementType:
+        case decrementType:
+            return {
+                ...state,
+                apiCounter: updateCounter(state.apiCounter, action)
             }
         default:
             return state;
