@@ -8,8 +8,8 @@ import withHoc from '../../utils/hoc';
 import { Lazy } from '../../utils/Lazy';
 
 
-import { fetchLatestCurrency, fetchCurrencyService } from '../../../redux/action';
-import { postTodoService } from '../../../redux/action2';
+import { fetchCurrencyService } from '../../../redux/action';
+import { postTodoService, getTodoService, incrementService } from '../../../redux/action2';
 
 //import Currency from './comps/Currency';
 
@@ -43,6 +43,23 @@ class Home extends React.Component
             .then((resp) =>
             {
                 console.log(resp)
+
+
+            })
+    }
+
+    getTodo = () =>
+    {
+        this.props.getTodoService({
+            "title": "foo",
+            "body": "bar",
+            "userId": 1
+        })
+            .then((resp) =>
+            {
+                console.log(resp)
+
+
             })
     }
 
@@ -54,7 +71,8 @@ class Home extends React.Component
         return <div>
             <h2>Home {name}</h2>
             <p><button onClick={this.getCurrency}>Get remote data</button></p>
-            <p><button onClick={this.postTodo}>Post Todo</button></p>
+
+            <p><button onClick={this.postTodo}>Post Todo</button> <button onClick={this.getTodo}>Get Todos</button></p>
 
             <Home.Currency currencyArr={currency.value} />
         </div>
@@ -78,6 +96,8 @@ const mapDispatchToProps = (dispatch) =>
     return {
         fetchCurrencyService: () => dispatch(fetchCurrencyService()),
         postTodoService: (todoObj) => dispatch(postTodoService(todoObj)),
+        getTodoService: () => dispatch(getTodoService()),
+        // incrementService: (v) => dispatch(incrementService(v))
     }
 }
 
