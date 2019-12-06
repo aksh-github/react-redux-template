@@ -47,7 +47,7 @@ export const Lazy = (type, compoName) =>
         //     return React.lazy(() => retryLoad(() => import('../common/' + compoName)))
 
         case 'page':
-            return React.lazy(() => retryLoad(() => import('../pages/' + compoName)))
+            return React.lazy(() => retryLoad(() => import(`../pages/${compoName}`)))
 
         default:
             //here compoName need to be full path
