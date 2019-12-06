@@ -1,13 +1,11 @@
 
 import { endPoints } from '../utils/config';
-
-
-export const FETCH_CURRENCY_FAIL = 'FETCH_CURRENCY_FAIL';
+import { fetchCurrencyType } from './actionTypes';
 
 export const currencyFetchFail = (error) =>
 {
     return {
-        type: FETCH_CURRENCY_FAIL,
+        type: fetchCurrencyType.fail,
         payload: {
             error: 'Something went wrong',
             loading: false,
@@ -16,11 +14,10 @@ export const currencyFetchFail = (error) =>
     };
 }
 
-export const FETCH_CURRENCY = 'FETCH_CURRENCY';
 export const currencyFetch = () =>
 {
     return {
-        type: FETCH_CURRENCY,
+        type: fetchCurrencyType.base,
         payload: {
             error: null,
             loading: true
@@ -28,11 +25,10 @@ export const currencyFetch = () =>
     };
 }
 
-export const FETCH_CURRENCY_SUCCESS = 'FETCH_CURRENCY_SUCCESS';
 export const currencyFetchSuccess = (currency) =>
 {
     return {
-        type: FETCH_CURRENCY_SUCCESS,
+        type: fetchCurrencyType.success,
         payload: {
             error: null,
             loading: false,
@@ -41,58 +37,6 @@ export const currencyFetchSuccess = (currency) =>
     }
 }
 
-// export const fetchLatestCurrency = someApiRelated => (dispatch, getState) =>
-// {
-
-//     // const { isLoading, value } = getState().commonReducer.data.currency;
-
-//     // if (isLoading)
-//     // {
-//     //     console.log('Already Loading');
-//     //     return Promise.resolve(null);      //always return promise
-//     // }
-//     // else if (value)
-//     // {
-//     //     dispatch(currencyFetchSuccess(value))
-//     //     return Promise.resolve(value);      //always return promise
-//     // }
-
-//     dispatch(currencyFetch())
-
-//     //url should be in .env file
-
-//     return fetch('https://api.exchangeratesapi.io' + endPoints.latestCurrency)
-//         .then(resp => resp.json())
-//         .then((resp) =>
-//         {
-//             // console.log(resp);
-
-//             if (resp && resp.rates)
-//             {
-//                 const keys = Object.keys(resp.rates);
-//                 let arr = [];
-
-//                 for (let i = 0; i < keys.length; ++i)
-//                 {
-//                     let o = { [keys[i]]: resp.rates[keys[i]] }
-//                     arr.push(o)
-//                 }
-
-//                 dispatch(currencyFetchSuccess(arr))
-//             }
-//             else
-//                 dispatch(currencyFetchFail(resp.error))
-
-//             return resp;    //might be reqd some times
-//         })
-//         .catch((err) =>
-//         {
-//             console.log(err);
-//             dispatch(currencyFetchFail())
-//         })
-// }
-
-//use of middleware
 
 export const fetchCurrencyService = someApiRelated => (dispatch, getState) =>
 {
@@ -114,6 +58,24 @@ export const fetchCurrencyService = someApiRelated => (dispatch, getState) =>
         }
     }
 
+    const responseValidator = (resp) =>
+    {
+        if (resp && resp.rates && resp.rates instanceof Object)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //foll example shows variation where all handler functions are optional now
+    // But in this case we need to take care of dispatching before, success, fail etc
+    // This provides flexibility when complex logic is involved
+
+    dispatch(currencyFetch());
+
     return dispatch({
         type: 'API',
         payload: {
@@ -122,12 +84,41 @@ export const fetchCurrencyService = someApiRelated => (dispatch, getState) =>
                 method: 'GET',
             },
             handlers: {
-                before: currencyFetch,
-                transform: transform,
-                onSuccess: currencyFetchSuccess,
-                onFailure: currencyFetchFail,
-                after: null
+                // before: currencyFetch,
+                // transform: transform,
+                // responseValidator: responseValidator,
+                // onSuccess: currencyFetchSuccess,
+                onFailure: currencyFetchFail,   // this is vv imp for network disconnect scenarios
+                // after: null
             }
         }
+    }).then((resp) =>
+    {
+
+        if (responseValidator(resp))
+        {
+            dispatch(currencyFetchSuccess(transform(resp)))
+        }
+        else
+        {
+            dispatch(currencyFetchFail(resp))
+        }
+
+        // console.log(actionTypes)
+
+        //foll done because of cyclic dependency bet action.js and action2.js
+        import('./action2').then((actions) =>
+        {
+            console.log(actions)
+            dispatch(actions.increment(1))
+        })
+
+
+        return resp;    //return original resp, NOT transformed one
+
     })
+        .catch((err) =>
+        {
+            dispatch(currencyFetchFail(err))
+        })
 }
