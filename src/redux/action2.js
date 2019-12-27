@@ -1,24 +1,24 @@
 
 import { endPoints } from '../utils/config';
-import { incrementType, postTodoType, getTodoType } from './actionTypes';
+import { incrementType, todoType } from './actionTypes';
 
 
 const postTodoAction = {
     base: () => ({
-        type: postTodoType.base,
+        type: todoType.post.base,
         payload: {
             error: null,
             loading: true
         }
     }), success: (todo) => ({
-        type: postTodoType.success,
+        type: todoType.post.success,
         payload: {
             error: null,
             loading: false,
             value: todo
         }
     }), fail: (error) => ({
-        type: postTodoType.fail,
+        type: todoType.post.fail,
         payload: {
             error: 'Something went wrong',
             loading: false,
@@ -30,20 +30,20 @@ const postTodoAction = {
 
 const getTodoAction = {
     base: () => ({
-        type: getTodoType.base,
+        type: todoType.get.base,
         payload: {
             error: null,
             loading: true
         }
     }), success: (todos) => ({
-        type: getTodoType.success,
+        type: todoType.get.success,
         payload: {
             error: null,
             loading: false,
             value: todos
         }
     }), fail: (error) => ({
-        type: getTodoType.fail,
+        type: todoType.get.fail,
         payload: {
             error: 'Something went wrong',
             loading: false,
