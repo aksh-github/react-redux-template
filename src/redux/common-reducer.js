@@ -2,12 +2,12 @@
 import { commonState } from './initialState';
 import { createReducer } from './redux-utils';
 
-import { incrementType, decrementType, postTodoType, getTodoType } from './actionTypes';
+import { incrementType, decrementType, todoType } from './actionTypes';
 
-// console.log(postTodoType)
+// console.log(post)
 
-const postTodoReducer = createReducer(postTodoType)
-const getTodoReducer = createReducer(getTodoType)
+const postTodoReducer = createReducer(todoType.post)
+const getTodoReducer = createReducer(todoType.get)
 
 // console.log(postTodoReducer)
 
@@ -37,18 +37,20 @@ const updateCounter = (state, action) =>
 
 export default (state = commonState, action) =>
 {
+    const { get, post } = todoType;
+
     switch (action.type)
     {
-        case postTodoType.base:
-        case postTodoType.fail:
-        case postTodoType.success:
+        case post.base:
+        case post.fail:
+        case post.success:
             return {
                 ...state,
                 currentTodo: postTodoReducer(state.currentTodo, action)    //updateCurrentTodo(state.currentTodo, action)
             }
-        case getTodoType.base:
-        case getTodoType.fail:
-        case getTodoType.success:
+        case get.base:
+        case get.fail:
+        case get.success:
             return {
                 ...state,
                 todos: getTodoReducer(state.todos, action)    //updateCurrentTodo(state.currentTodo, action)
