@@ -11,10 +11,10 @@ import * as middlewares from './middlewares';
 
 
 const reducer = combineReducers({
-    commonReducer: commonReducer,
+    home: homeReducer,
+    common: commonReducer,
     // usersReducer: usersReducer,
     // aboutReducer: aboutReducer,
-    homeReducer: homeReducer
 });
 
 
