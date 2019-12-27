@@ -1,45 +1,38 @@
 
 import { endPoints } from '../utils/config';
-import { fetchCurrencyType } from './actionTypes';
+import { currencyType } from './actionTypes';
 
-export const currencyFetchFail = (error) =>
-{
-    return {
-        type: fetchCurrencyType.fail,
-        payload: {
-            error: 'Something went wrong',
-            loading: false,
-            value: []
-        }
-    };
-}
 
-export const currencyFetch = () =>
-{
-    return {
-        type: fetchCurrencyType.base,
+const fetchCurrencyAction = {
+    base: () => ({
+        type: currencyType.fetch.base,
         payload: {
             error: null,
             loading: true
         }
-    };
-}
-
-export const currencyFetchSuccess = (currency) =>
-{
-    return {
-        type: fetchCurrencyType.success,
+    }),
+    success: (currency) => ({
+        type: currencyType.fetch.success,
         payload: {
             error: null,
             loading: false,
             value: currency
         }
-    }
+    }),
+    fail: (error) => ({
+        type: currencyType.fetch.fail,
+        payload: {
+            error: 'Something went wrong',
+            loading: false,
+            value: []
+        }
+    })
 }
 
 
 export const fetchCurrencyService = someApiRelated => (dispatch, getState) =>
 {
+    const { base, success, fail } = fetchCurrencyAction;
 
     const transform = (resp) =>
     {
@@ -74,7 +67,7 @@ export const fetchCurrencyService = someApiRelated => (dispatch, getState) =>
     // But in this case we need to take care of dispatching before, success, fail etc
     // This provides flexibility when complex logic is involved
 
-    dispatch(currencyFetch());
+    dispatch(base());
 
     return dispatch({
         type: 'API',
@@ -88,7 +81,7 @@ export const fetchCurrencyService = someApiRelated => (dispatch, getState) =>
                 // transform: transform,
                 // responseValidator: responseValidator,
                 // onSuccess: currencyFetchSuccess,
-                onFailure: currencyFetchFail,   // this is vv imp for network disconnect scenarios
+                onFailure: fail,   // this is vv imp for network disconnect scenarios
                 // after: null
             }
         }
@@ -97,11 +90,11 @@ export const fetchCurrencyService = someApiRelated => (dispatch, getState) =>
 
         if (responseValidator(resp))
         {
-            dispatch(currencyFetchSuccess(transform(resp)))
+            dispatch(success(transform(resp)))
         }
         else
         {
-            dispatch(currencyFetchFail(resp))
+            dispatch(fail(resp))
         }
 
         // console.log(actionTypes)
@@ -119,6 +112,6 @@ export const fetchCurrencyService = someApiRelated => (dispatch, getState) =>
     })
         .catch((err) =>
         {
-            dispatch(currencyFetchFail(err))
+            dispatch(fail(err))
         })
 }
