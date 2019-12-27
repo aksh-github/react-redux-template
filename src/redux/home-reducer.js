@@ -1,21 +1,20 @@
 
 import { homeState } from './initialState';
-// import { FETCH_CURRENCY, FETCH_CURRENCY_FAIL, FETCH_CURRENCY_SUCCESS } from '../redux/action';
-
-import { fetchCurrencyType } from './actionTypes';
+import { currencyType } from './actionTypes';
 
 import { createReducer } from './redux-utils';
 
-const currencyReducer = createReducer(fetchCurrencyType, 'MERGE')
+const currencyReducer = createReducer(currencyType.fetch, 'MERGE')
 
 export default (state = homeState, action) =>
 {
+    const { fetch } = currencyType;
 
     switch (action.type)
     {
-        case fetchCurrencyType.base:
-        case fetchCurrencyType.fail:
-        case fetchCurrencyType.success:
+        case fetch.base:
+        case fetch.fail:
+        case fetch.success:
             return {
                 ...state,
                 currency: currencyReducer(state.currency, action)   //updateCurrency(state.currency, action)
