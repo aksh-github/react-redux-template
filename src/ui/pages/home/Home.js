@@ -79,17 +79,18 @@ class Home extends React.Component
     }
 }
 
-const prop1 = 'do nothing prop';
 
-const func = (prop) =>
+const selectorHome = (state) => state.home
+
+const mapStateToProps = (state) => 
 {
-    console.log('do nothing func for HOC', prop);
-}
+    const home = selectorHome(state);
 
-const mapStateToProps = state => ({
-    currency: state.homeReducer.currency,
-    name: state.homeReducer.name
-});
+    return {
+        currency: home.currency,
+        name: home.name
+    }
+};
 
 const mapDispatchToProps = (dispatch) =>
 {
@@ -102,4 +103,7 @@ const mapDispatchToProps = (dispatch) =>
 }
 
 //export default withHoc(prop1, func)(withRouter(connect(mapStateToProps)(Home)));
-export default withRouter(withHoc(prop1, func)(connect(mapStateToProps, mapDispatchToProps)(Home)));
+export default withRouter(withHoc('do nothing prop', (prop) =>
+{
+    console.log('do nothing func for HOC', prop);
+})(connect(mapStateToProps, mapDispatchToProps)(Home)));
