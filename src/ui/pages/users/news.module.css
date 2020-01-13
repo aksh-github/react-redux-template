@@ -1,0 +1,99 @@
+.container {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-rows: repeat(2, 100px); */
+}
+
+@media screen and (max-width: 767px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.container > div {
+    /* border: 0.1px dotted; */
+}
+
+.box {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+/* .box > div {
+    width: 66.6666%;
+}
+
+.box > .imageWrapper {
+    width: 33.3333%;
+} */
+
+/* actual styles */
+
+.newsView {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 2em;
+    max-width: 1366px;
+    margin: 0 auto;
+}
+
+.newsCard {
+    /* margin: 1em 0; */
+    padding: 1em 15px;
+    min-height: 100px;
+}
+
+.img {
+    /* width: 10em; */
+    /* max-width: 100%; */
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    /* background: url(https://www.dcsltd.co.uk/wp-content/themes/dcs/images/ui.news-image-placeholder.jpg); */
+}
+
+.link {
+    /* font-size: large; */
+    color: #56585c;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.newsWrapper {
+    padding: 0 15px;
+}
+
+.pubDate {
+    font-size: 0.8em;
+    padding: 15px 0 0;
+}
+
+@media screen and (max-width: 768px) {
+    .newsView {
+        padding: 0 1em;
+    }
+
+    .newsCard {
+        min-height: 50px;
+        /* margin: 0.5em 0; */
+        padding: 0.5em 0;
+    }
+
+    .img {
+        height: 64px;
+    }
+
+    .link {
+        font-size: small;
+    }
+
+    .newsWrapper {
+        padding: 0 10px;
+    }
+
+    .pubDate {
+        font-size: 0.5em;
+        padding: 5px 0 0;
+        display: none;
+    }
+}
