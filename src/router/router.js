@@ -37,7 +37,7 @@ const Routes = () =>
             {
                 // console.log(props);
 
-                const Users = Lazy('page', 'Users');
+                const Users = Lazy('page', 'users/Users');
 
                 return <ErrorBoundary>
                     <Users />
