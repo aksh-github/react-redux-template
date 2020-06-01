@@ -1,21 +1,21 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import withHoc from "../../utils/hoc";
-import { Lazy } from "../../utils/Lazy";
+import withHoc from '../../utils/hoc';
+import { Lazy } from '../../utils/Lazy';
 
-import { fetchCurrencyService } from "../../../redux/action";
+import { fetchCurrencyService } from '../../../redux/action';
 import {
     postTodoService,
     getTodoService,
-    incrementService
-} from "../../../redux/action2";
+    incrementService,
+} from '../../../redux/action2';
 
 //import Currency from './comps/Currency';
 
 class Home extends React.Component {
-    static Currency = Lazy("page", "home/comps/Currency");
+    static Currency = Lazy('page', 'home/comps/Currency');
 
     getCurrency = () => {
         // this.props.dispatch(fetchLatestCurrency())
@@ -24,21 +24,21 @@ class Home extends React.Component {
         //         // console.log(resp)
         //     })
 
-        this.props.fetchCurrencyService().then(resp => {
+        this.props.fetchCurrencyService().then((resp) => {
             console.log(resp);
         });
     };
 
     postTodo = () => {
-        const x = "test";
+        const x = 'test';
 
         this.props
             .postTodoService({
-                title: "foo",
-                body: "bar",
-                userId: 1
+                title: 'foo',
+                body: 'bar',
+                userId: 1,
             })
-            .then(resp => {
+            .then((resp) => {
                 console.log(resp);
             });
     };
@@ -46,11 +46,11 @@ class Home extends React.Component {
     getTodo = () => {
         this.props
             .getTodoService({
-                title: "foo",
-                body: "bar",
-                userId: 1
+                title: 'foo',
+                body: 'bar',
+                userId: 1,
             })
-            .then(resp => {
+            .then((resp) => {
                 console.log(resp);
             });
     };
@@ -66,7 +66,7 @@ class Home extends React.Component {
                 </p>
 
                 <p>
-                    <button onClick={this.postTodo}>Post Todo</button>{" "}
+                    <button onClick={this.postTodo}>Post Todo</button>{' '}
                     <button onClick={this.getTodo}>Get Todos</button>
                 </p>
 
@@ -76,29 +76,35 @@ class Home extends React.Component {
     }
 }
 
-const selectorHome = state => state.home;
+const selectorHome = (state) => state.home;
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     const home = selectorHome(state);
 
     return {
         currency: home.currency,
-        name: home.name
+        name: home.name,
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchCurrencyService: () => dispatch(fetchCurrencyService()),
-        postTodoService: todoObj => dispatch(postTodoService(todoObj)),
-        getTodoService: () => dispatch(getTodoService())
-        // incrementService: (v) => dispatch(incrementService(v))
-    };
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         fetchCurrencyService: () => dispatch(fetchCurrencyService()),
+//         postTodoService: todoObj => dispatch(postTodoService(todoObj)),
+//         getTodoService: () => dispatch(getTodoService())
+//         // incrementService: (v) => dispatch(incrementService(v))
+//     };
+// };
+
+const mapDispatchToProps = {
+    fetchCurrencyService,
+    postTodoService,
+    getTodoService,
 };
 
 //export default withHoc(prop1, func)(withRouter(connect(mapStateToProps)(Home)));
 export default withRouter(
-    withHoc("do nothing prop", prop => {
-        console.log("do nothing func for HOC", prop);
+    withHoc('do nothing prop', (prop) => {
+        console.log('do nothing func for HOC', prop);
     })(connect(mapStateToProps, mapDispatchToProps)(Home))
 );
