@@ -14,241 +14,239 @@ class Users extends React.Component {
         saverMode: false,
         news: [
             {
-                guid: 'cde85faa-ab5b-4314-b372-ea2473b19ee8',
+                guid: 'edd89e34-395d-457c-bd2d-499fc8055d35',
                 title:
-                    'US economy misses forecasts, adds just 145,000 jobs in December',
+                    'New Hampshire primary live updates: Voting starts in nation’s first primary',
                 link:
-                    'https://markets.businessinsider.com/news/stocks/december-jobs-report-us-economy-145000-jobs-added-unemployment-rate-2020-1-1028809219',
+                    'https://www.washingtonpost.com/politics/2020/02/11/new-hampshire-primary-live-updates/',
                 img:
-                    'https://images.markets.businessinsider.com/image/5cdeaf05021b4c0679206d89-2400/2018-09-27t211623z1107338238rc1ba4212330rtrmadp3ford-motor-plant.jpg',
-                pubDate: '2020-01-10T14:39:05Z',
+                    'https://www.washingtonpost.com/resizer/XqMLNyOtHHCweguz4pDFvVxCOLE=/1440x0/smart/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/HOVFICSMPEI6VFT34B2NGAWH2Q.jpg',
+                pubDate: '2020-02-11T14:36:00+00:00',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: '616a1ef3-4479-478d-a5cd-08c3281f5af5',
+                guid: '4bf3c637-4f70-4cd8-abe1-eb7123b0b471',
                 title:
-                    'A triple threat storm could bring tornadoes, snow and flooding to much of the US this weekend',
+                    'T-Mobile and Sprint just got approval from a federal judge for a merger - Business Insider',
                 link:
-                    'https://www.cnn.com/2020/01/10/weather/triple-threat-storm-friday-wxc/index.html',
+                    'http://www.businessinsider.com/t-mobile-sprint-merger-approved-by-us-judge-2020-2',
                 img:
-                    'https://cdn.cnn.com/cnnnext/dam/assets/200108145735-weather-storm-precipitation-friday-20200108-super-tease.jpg',
-                pubDate: '2020-01-10T14:24:00+00:00',
+                    'https://i.insider.com/5e42b6783b62b7397b0d2468?width=1200&format=jpeg',
+                pubDate: '2020-02-11T14:22:44Z',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: '0858ccf8-0158-40e5-bb66-a2df67b131af',
+                guid: '6eecddf4-8356-49c6-9328-a8a13c94a426',
                 title:
-                    'Panera plans to slash meat from half of its menu in response to climate change - Business Insider',
+                    'Andrew Yang staffers furious over layoffs, chaotic campaign culture - Business Insider',
                 link:
-                    'http://www.businessinsider.com/panera-to-make-half-of-menu-plant-based-climate-change-2020-1',
+                    'http://www.businessinsider.com/andrew-yang-staffers-furious-over-layoffs-chaotic-campaign-culture-2020-2',
                 img:
-                    'https://image.businessinsider.com/5d0a95a2e3ecba31f01509b5?width=1200&format=jpeg',
-                pubDate: '2020-01-10T14:11:01Z',
+                    'https://i.insider.com/5e42b1ba3b62b7358943a935?width=1200&format=jpeg',
+                pubDate: '2020-02-11T14:05:00Z',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: '032b45b9-0287-4380-a95c-383d0a6b8565',
+                guid: '7423d680-56e4-4038-99e1-c61de0da6dac',
                 title:
-                    'Iraq PM tells US to start preparing for a troop withdrawal - Business Insider',
+                    "Inside the world's largest all-glass, underwater restaurant - Business Insider",
                 link:
-                    'http://www.businessinsider.com/iraq-pm-tells-america-withdraw-troops-2020-1',
+                    'http://www.businessinsider.com/maldives-biggest-underwater-restaurant-undersea-photo-price-food-review-2020-2',
                 img:
-                    'https://image.businessinsider.com/5e18831324fe1240b51faab2?width=1200&format=jpeg',
-                pubDate: '2020-01-10T14:10:40Z',
+                    'https://i.insider.com/5e20eba162fa81793365f072?width=1200&format=jpeg',
+                pubDate: '2020-02-11T14:02:00Z',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: '23f4fd9e-bb11-4dbe-87d5-1ed8d206a62f',
+                guid: '4f4a9ab6-cc75-4a0d-adcf-617822af972c',
                 title:
-                    'MacDill Air Force Base in Tampa, Florida on brief lockdown after report of armed suspect today',
+                    'Police officer in Arkansas placed on leave after putting student in chokehold',
                 link:
-                    'https://www.cbsnews.com/news/macdill-air-force-base-on-lockdown-tampa-reports-of-active-shooter-today-live-updates-2020-01-10/',
+                    'https://www.nbcnews.com/news/us-news/police-officer-arkansas-placed-leave-after-putting-student-chokehold-n1134596',
                 img:
-                    'https://cbsnews2.cbsistatic.com/hub/i/r/2019/12/03/79589b2c-fb50-4255-871d-e2b4dca33cc0/thumbnail/1200x630/14df4bcf23dda5f7dd892f9b10640831/crawford-mil-housing-macdill-afb-ext-eve-20191203-fd-frame-228.jpg',
-                pubDate: '2020-01-10T13:29:00+00:00',
+                    'https://media4.s-nbcnews.com/j/newscms/2019_01/2705191/nbc-social-default_b6fa4fef0d31ca7e8bc7ff6d117ca9f4.nbcnews-fp-1200-630.png',
+                pubDate: '2020-02-11T13:51:00+00:00',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: '11f334d9-cf4c-4904-a6b7-da40fa588d51',
+                guid: 'dc1590c7-9457-4a3d-be28-19d0394f1af7',
                 title:
-                    'Microsoft contractors in China listened to Skype recordings with low cybersecurity - Business Insider',
+                    'A new warrant reveals how Apple detects child pornography and works with law enforcement - Business Insider',
                 link:
-                    'http://www.businessinsider.com/microsoft-contractors-listened-to-recordings-with-minimal-security-2020-1',
+                    'http://www.businessinsider.com/apple-child-abuse-hashing-warrant-2020-2',
                 img:
-                    'https://image.businessinsider.com/5e186a3af442313b946ce822?width=1200&format=jpeg',
-                pubDate: '2020-01-10T12:48:34Z',
+                    'https://i.insider.com/5e429e022dae5c2d685168f3?width=1200&format=jpeg',
+                pubDate: '2020-02-11T13:32:14Z',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: 'd3ed043d-316e-4092-86ca-b7232e0914e0',
+                guid: '95dcaf92-0724-442a-8211-0b8497b57738',
                 title:
-                    'Ukraine Iran plane crash: Victims identities, stories revealed - Business Insider',
+                    'How to get into the UC Berkeley Haas School of Business - Business Insider',
                 link:
-                    'http://www.businessinsider.com/ukraine-iran-plane-crash-victims-identities-revealed-2020-1',
+                    'http://www.businessinsider.com/how-to-get-into-uc-berkeley-haas-school-of-business',
                 img:
-                    'https://image.businessinsider.com/5e1717b524fe1217407bf405?width=1200&format=jpeg',
-                pubDate: '2020-01-10T12:41:00Z',
+                    'https://i.insider.com/5e3852005bc79c73547032d2?width=1200&format=jpeg',
+                pubDate: '2020-02-11T13:30:00Z',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: 'd03dd408-25ac-483d-a7e3-ab79b5e533cf',
+                guid: '6c8447d3-31c0-403a-85b7-080e01edda10',
                 title:
-                    'Ukraine Iran crash: Panic, bad training may have led to missile attack - Business Insider',
+                    'Profile of new WeWork CEO Sandeep Mathrani - Business Insider',
                 link:
-                    'http://www.businessinsider.com/ukraine-iran-crash-panic-bad-training-may-led-missile-attack-2020-1',
+                    'http://www.businessinsider.com/profile-of-new-wework-ceo-sandeep-mathrani-2020-2',
                 img:
-                    'https://image.businessinsider.com/5e18593424fe1233e972efa2?width=1200&format=jpeg',
-                pubDate: '2020-01-10T12:11:06Z',
+                    'https://i.insider.com/5e41e58b2dae5c68f57bdce3?width=1200&format=jpeg',
+                pubDate: '2020-02-11T13:21:43Z',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: '75f82578-56d4-4252-8568-10ae79a46c67',
+                guid: 'edfd72f2-9657-4619-bb3f-95cb2114811c',
                 title:
-                    "'Too much wealth is in too few hands' â Michael Bloomberg slams Trump's tax cuts as a gift to the rich",
+                    'Fortune 500 execs share the biggest workplace diversity trends - Business Insider',
                 link:
-                    'https://markets.businessinsider.com/news/stocks/michael-bloomberg-slams-donald-trump-tax-cuts-economic-record-2020-1-1028808714',
+                    'http://www.businessinsider.com/execs-fortune-500-companies-talk-biggest-diversity-inclusion-trends',
                 img:
-                    'https://images.markets.businessinsider.com/image/5e184f1bf4423134b46969e3-1350/screen-shot-2020-01-10-at-101546-am-2.png',
-                pubDate: '2020-01-10T11:36:06Z',
+                    'https://i.insider.com/5e38596c5bc79c7cf41335c3?width=1200&format=jpeg',
+                pubDate: '2020-02-11T13:05:00Z',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: '151dac3a-4323-4ae9-9414-06ad652e6ae3',
+                guid: '4cb208dc-bcde-4681-820f-51eb9f5b5d35',
                 title:
-                    "Enormous 'Megafire' In Australia Engulfs 1.5 Million Acres",
+                    'Coronavirus updates: Death toll tops 1,000 in China as nations race to contain outbreak',
                 link:
-                    'https://www.npr.org/2020/01/10/795169417/enormous-mega-fire-in-australia-engulfs-1-5-million-acres',
+                    'https://www.nbcnews.com/news/world/coronavirus-updates-death-toll-tops-1-000-china-nations-race-n1134576',
                 img:
-                    'https://media.npr.org/assets/img/2020/01/10/rts2xu0s_wide-a0bfb42ea8e96a3bf91a5db42bd6be0c8b982ac1.jpg?s=1400',
-                pubDate: '2020-01-10T11:33:00+00:00',
+                    'https://media3.s-nbcnews.com/j/newscms/2020_07/3225196/200211-wuhan-coronavirus-mc-951_95336f72c1085b1e65c81384c65d8ea6.nbcnews-fp-1200-630.JPG',
+                pubDate: '2020-02-11T12:49:00+00:00',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: '6e231698-d9fa-4f33-8853-0facb444877b',
+                guid: '028eec33-e834-40e6-a9fd-80e76d24de63',
                 title:
-                    'A Teenager’s Breakthrough Gene Therapy for Sickle Cell Disease',
+                    'Wuhan coronavirus could infect 60% of the world, leading expert says - Business Insider',
                 link:
-                    'https://www.nytimes.com/2020/01/10/the-weekly/sickle-cell-dna-reset.html',
+                    'http://www.businessinsider.com/coronavirus-could-infect-60-percent-of-world-unchecked-gabriel-leung-2020-2',
                 img:
-                    'https://static01.nyt.com/images/2020/01/12/universal/12theweekly-myblood-promo/12theweekly-myblood-promo-facebookJumbo-v2.jpg',
-                pubDate: '2020-01-10T11:20:22Z',
+                    'https://i.insider.com/5e429b5c3b62b72a805ea9f2?width=1200&format=jpeg',
+                pubDate: '2020-02-11T12:22:13Z',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: 'ca4cef9d-3aa1-4654-b03e-c3aa1a9c6380',
+                guid: '9600b422-16c4-4811-8946-60dc560b8725',
                 title:
-                    'Democrats brace for round two of impeachment witness fight | TheHill',
+                    'Trump compares migrants to snakes, fawns over Ivanka at NH rally - Business Insider',
                 link:
-                    'https://thehill.com/homenews/senate/477633-democrats-brace-for-round-two-of-impeachment-witness-fight',
+                    'http://www.businessinsider.com/trump-new-hampshire-rally-migrants-snakes-ivanka-beautiful-2020-2',
                 img:
-                    'https://thehill.com/sites/default/files/mcconnellmitch_schumercharles_010320gn3_lead_0.jpg',
-                pubDate: '2020-01-10T11:00:51+00:00',
+                    'https://i.insider.com/5e42897b3b62b7227a5e4cf3?width=1200&format=jpeg',
+                pubDate: '2020-02-11T12:03:28Z',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: 'd862adeb-4082-4ded-b077-aa5ede730167',
+                guid: '9e41f9f0-236a-450e-8f58-571bf95a966f',
                 title:
-                    "Graham, Paul rift deepens over Trump's war powers | TheHill",
+                    'A US evacuee with coronavirus was mistakenly released from hospital - Business Insider',
                 link:
-                    'https://thehill.com/homenews/senate/477625-graham-paul-rift-deepens-over-trumps-war-powers',
+                    'http://www.businessinsider.com/a-us-evacuee-with-coronavirus-was-mistakenly-released-from-hospital-2020-2',
                 img:
-                    'https://thehill.com/sites/default/files/grahamlindsey_paulrand_gn1.jpg',
-                pubDate: '2020-01-10T11:00:48+00:00',
+                    'https://i.insider.com/5e4275f53b62b71ac00d35a2?width=1200&format=jpeg',
+                pubDate: '2020-02-11T11:05:01Z',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: 'd43a84f8-6af5-46f6-84a3-358dd6d16cc5',
-                title: 'Iraqi PM tells US to start working on troop withdrawal',
+                guid: 'bec5b37e-e0ba-4eef-9dbc-4aa460aea54a',
+                title: 'Philippines Says It Will End U.S. Security Agreement',
                 link:
-                    'https://www.cnbc.com/2020/01/10/iraqi-pm-tells-us-to-decide-the-mechanism-for-troop-withdrawal.html',
+                    'https://www.npr.org/2020/02/11/804751958/philippines-says-it-will-end-u-s-security-agreement',
                 img:
-                    'https://image.cnbcfm.com/api/v1/image/106330601-1578666048765iraq.jpg?v=1578666118',
-                pubDate: '2020-01-10T10:54:00+00:00',
+                    'https://media.npr.org/assets/img/2020/02/11/ap_19101198017396_wide-af413900b7e440a6ceccc23d783fb0abd8d7b57f.jpg?s=1400',
+                pubDate: '2020-02-11T10:34:00+00:00',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: '983abaf9-14e7-45ee-801b-ad8d09d06bd9',
+                guid: 'f93ae6e1-ccb5-4573-8d1a-e9390b5b7a5d',
                 title:
-                    'She Was a Star of New York Real Estate, but Her Life Story Was a Lie',
+                    'Coronavirus Could Spread Through Pipes in Buildings, Officials Fear',
                 link:
-                    'https://www.nytimes.com/2020/01/10/nyregion/faith-hope-consolo.html',
+                    'https://www.newsweek.com/coronavirus-could-spread-through-pipes-buildings-officials-fear-1486646',
                 img:
-                    'https://static01.nyt.com/images/2020/01/12/nyregion/12FAITH/10FAITH-facebookJumbo.jpg',
-                pubDate: '2020-01-10T10:00:24Z',
+                    'https://d.newsweek.com/en/full/1566451/coronavirus-hong-kong-cheung-hong-estatetsing-yi-hong-mei-house.jpg',
+                pubDate: '2020-02-11T09:41:22+00:00',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: '60e6d628-3ce2-438f-b149-875bfcc65a41',
+                guid: '9dd2ca63-23e2-4836-bb08-c35293112c94',
                 title:
-                    'U.S. Added 145,000 Jobs in December; Unemployment at 3.5%',
+                    'Midnight vote tradition lives on in New Hampshire mountain hamlet',
                 link:
-                    'https://www.nytimes.com/2020/01/10/business/economy/december-jobs-report.html',
+                    'https://www.reuters.com/article/us-usa-election-new-hampshire-dixville-n-idUSKBN2050HR',
                 img:
-                    'https://static01.nyt.com/images/2020/01/10/business/10jobs1/10jobs1-facebookJumbo.jpg',
-                pubDate: '2020-01-10T10:00:22Z',
+                    'https://s3.reutersmedia.net/resources/r/?m=02&d=20200211&t=2&i=1488722502&w=1200&r=LYNXMPEG1A0HO',
+                pubDate: '2020-02-11T06:09:00+00:00',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: '2610c83f-470e-4cb9-a8ed-f980b563d33e',
+                guid: '57eacf09-8467-4fdc-9a1d-94f73ce45f7c',
                 title:
-                    'These are the 15 European fintech startups VCs think will blow up in 2020 - Business Insider',
+                    'Bloomberg tops in tiny New Hampshire town that votes first in primary',
                 link:
-                    'http://www.businessinsider.com/15-european-fintech-startups-vc-think-will-blow-up-2020-1',
+                    'https://nypost.com/2020/02/11/bloomberg-tops-in-tiny-new-hampshire-town-that-votes-first-in-primary/',
                 img:
-                    'https://image.businessinsider.com/5c8143042628980b4e7b1da5?width=1200&format=jpeg',
-                pubDate: '2020-01-10T09:23:50Z',
+                    'https://thenypost.files.wordpress.com/2020/02/ballots.jpg?quality=90&strip=all&w=1200',
+                pubDate: '2020-02-11T05:42:00+00:00',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: '9794e278-cd95-4658-af36-efcd4bb706fc',
+                guid: '96762694-c56a-4768-b585-f29a33ff59b9',
                 title:
-                    'Live Updates: Ukraine Presses Allies for Evidence on Iran Plane Crash',
+                    'Maryland school district investigating after Nazi flag seen hanging in high school window',
                 link:
-                    'https://www.nytimes.com/2020/01/10/world/middleeast/iran-ukraine-plane-crash.html',
+                    'https://www.nbcnews.com/news/us-news/maryland-school-district-investigating-after-nazi-flag-seen-hanging-high-n1134566',
                 img:
-                    'https://static01.nyt.com/images/2020/01/10/world/10iran-crash02/10iran-crash02-facebookJumbo.jpg',
-                pubDate: '2020-01-10T08:41:35Z',
+                    'https://media2.s-nbcnews.com/j/newscms/2020_07/3225091/200210-thomas-johnson-high-school-google-ac-1006p_8598348dac0e4768d9a0964cfb68f7d9.nbcnews-fp-1200-630.jpg',
+                pubDate: '2020-02-11T03:45:00+00:00',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: 'cd4369ab-4b1c-4e0b-9dfd-d1ba0c8bda2b',
+                guid: 'dab442e2-fcdf-401b-9fe4-093de605dcc6',
                 title:
-                    "Authorities are looking for a bank robber they call the 'Bad Wig Bandit'",
+                    "Republican Senate Budget Committee chair won't hold hearing on Trump budget",
                 link:
-                    'https://www.cnn.com/2020/01/10/us/bad-wig-bandit-robbery-nc-trnd/index.html',
+                    'https://www.politico.com/news/2020/02/10/senate-committee-enzi-hearing-trump-budget-113650',
                 img:
-                    'https://cdn.cnn.com/cnnnext/dam/assets/200110015314-bad-wig-bandit-robbery-nc-trnd-super-tease.jpg',
-                pubDate: '2020-01-10T08:09:00+00:00',
+                    'https://static.politico.com/36/01/9e39e09a44e39d72d1bbd078d936/20200210-mike-enzi-gty-773.jpg',
+                pubDate: '2020-02-11T01:08:00+00:00',
                 tags: null,
                 source: 'latest'
             },
             {
-                guid: 'ae2745d9-13a8-4196-af63-b19c34117331',
+                guid: 'af016e0a-71e7-4942-bb12-ba18e5741e15',
                 title:
-                    '‘Chaos Is the Point’: Russian Hackers and Trolls Grow Stealthier in 2020',
-                link:
-                    'https://www.nytimes.com/2020/01/10/us/politics/russia-hacking-disinformation-election.html',
-                img:
-                    'https://static01.nyt.com/images/2019/12/22/multimedia/22dc-CYBERELECT-01/22dc-CYBERELECT-01-facebookJumbo.jpg',
-                pubDate: '2020-01-10T08:00:09Z',
+                    'U.S. Charges Four Chinese Military Hackers With Massive Equifax Breach | NBC Nightly News',
+                link: 'https://www.youtube.com/watch?v=eBja21zJm-o',
+                img: 'https://i.ytimg.com/vi/eBja21zJm-o/maxresdefault.jpg',
+                pubDate: '2020-02-11T01:07:25+00:00',
                 tags: null,
                 source: 'latest'
             }
@@ -269,6 +267,7 @@ class Users extends React.Component {
                         <div>
                             <NewsWrapper {...item} />
                         </div>
+                        <div>&amp;</div>
                     </article>
                 ))}
             </div>
