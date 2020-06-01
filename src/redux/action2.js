@@ -1,84 +1,79 @@
-
 import { endPoints } from '../utils/config';
 import { incrementType, todoType } from './actionTypes';
-
 
 const postTodoAction = {
     base: () => ({
         type: todoType.post.base,
         payload: {
             error: null,
-            loading: true
-        }
-    }), success: (todo) => ({
+            loading: true,
+        },
+    }),
+    success: (todo) => ({
         type: todoType.post.success,
         payload: {
             error: null,
             loading: false,
-            value: todo
-        }
-    }), fail: (error) => ({
+            value: todo,
+        },
+    }),
+    fail: (error) => ({
         type: todoType.post.fail,
         payload: {
             error: 'Something went wrong',
             loading: false,
-            // value: null  
-        }
-    })
-}
-
+            // value: null
+        },
+    }),
+};
 
 const getTodoAction = {
     base: () => ({
         type: todoType.get.base,
         payload: {
             error: null,
-            loading: true
-        }
-    }), success: (todos) => ({
+            loading: true,
+        },
+    }),
+    success: (todos) => ({
         type: todoType.get.success,
         payload: {
             error: null,
             loading: false,
-            value: todos
-        }
-    }), fail: (error) => ({
+            value: todos,
+        },
+    }),
+    fail: (error) => ({
         type: todoType.get.fail,
         payload: {
             error: 'Something went wrong',
             loading: false,
-            // value: null  
-        }
-    })
-}
+            // value: null
+        },
+    }),
+};
 
-export const increment = (val) =>
-{
+export const increment = (val) => {
     return {
         type: incrementType,
         payload: {
-            value: val ? val : 1
-        }
-    }
-}
+            value: val ? val : 1,
+        },
+    };
+};
 
-
-export const postTodoService = todoObj => (dispatch, getState) =>
-{
-
-    const responseValidator = (resp) =>
-    {
-        if (resp && resp.id)
-        {
+export const postTodoService = (todoObj) => (dispatch, getState) => {
+    const responseValidator = (resp) => {
+        if (resp && resp.id) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
-    }
+    };
 
     const { base, success, fail } = postTodoAction;
+
+    dispatch(base());
 
     return dispatch({
         type: 'API',
@@ -88,44 +83,35 @@ export const postTodoService = todoObj => (dispatch, getState) =>
                 method: 'POST',
                 body: todoObj,
                 headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
             },
-            handlers: {
-                before: base,     //before api call
-                //transform: transform,
-                responseValidator: responseValidator,
-                onSuccess: success,
-                onFailure: fail,
-                after: null
-            }
+        },
+    }).then((resp) => {
+        if (responseValidator(resp)) {
+            dispatch(success(resp));
+            dispatch(increment(1));
+        } else {
+            // dispatch(fail(resp));    //if we are throwing we dont need to dispatch fail here, catch block will dispatch fail
+            throw Error('Something went wrong, could not post todo');
         }
-    }).then((resp) =>
-    {
-        if (responseValidator(resp))
-            dispatch(increment(1))
 
         return resp;
-    })
-}
+    });
+};
 
-
-export const getTodoService = () => (dispatch, getState) =>
-{
-
-    const responseValidator = (resp) =>
-    {
-        if (resp && resp instanceof Array)
-        {
+export const getTodoService = () => (dispatch, getState) => {
+    const responseValidator = (resp) => {
+        if (resp && resp instanceof Array) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
-    }
+    };
 
     const { base, success, fail } = getTodoAction;
+
+    dispatch(base());
 
     return dispatch({
         type: 'API',
@@ -135,28 +121,32 @@ export const getTodoService = () => (dispatch, getState) =>
                 method: 'GET',
                 body: {},
                 headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
             },
-            handlers: {
-                before: base,     //before api call
-                //transform: transform,
-                responseValidator: responseValidator,
-                onSuccess: success,
-                onFailure: fail,
-                after: null
-            }
+            // ,
+            // handlers: {
+            //     before: base,     //before api call
+            //     //transform: transform,
+            //     responseValidator: responseValidator,
+            //     onSuccess: success,
+            //     onFailure: fail,
+            //     after: null
+            // }
+        },
+    }).then((resp) => {
+        if (responseValidator(resp)) {
+            dispatch(success(resp));
+            dispatch(increment(1));
+        } else {
+            // dispatch(fail(resp));    //if we are throwing we dont need to dispatch fail here, catch block will dispatch fail
+            throw Error('Something went wrong, could not get response');
         }
-    }).then((resp) =>
-    {
-        if (responseValidator(resp))
-            dispatch(increment(1))
 
         return resp;
-    })
-}
+    });
+};
 
-export const incrementService = (val) => (dispatch, getState) =>
-{
-    return increment(val)
-}
+export const incrementService = (val) => (dispatch, getState) => {
+    return increment(val);
+};
