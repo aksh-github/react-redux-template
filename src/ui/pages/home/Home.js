@@ -92,14 +92,20 @@ const mapStateToProps = (state) =>
     }
 };
 
-const mapDispatchToProps = (dispatch) =>
-{
-    return {
-        fetchCurrencyService: () => dispatch(fetchCurrencyService()),
-        postTodoService: (todoObj) => dispatch(postTodoService(todoObj)),
-        getTodoService: () => dispatch(getTodoService()),
-        // incrementService: (v) => dispatch(incrementService(v))
-    }
+// const mapDispatchToProps = (dispatch) =>
+// {
+//     return {
+//         fetchCurrencyService: () => dispatch(fetchCurrencyService()),
+//         postTodoService: (todoObj) => dispatch(postTodoService(todoObj)),
+//         getTodoService: () => dispatch(getTodoService()),
+//         // incrementService: (v) => dispatch(incrementService(v))
+//     }
+// }
+
+const mapDispatchToProps = {
+    fetchCurrencyService,
+    postTodoService,
+    getTodoService
 }
 
 //export default withHoc(prop1, func)(withRouter(connect(mapStateToProps)(Home)));
