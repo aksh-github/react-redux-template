@@ -105,7 +105,8 @@ const mapStateToProps = (state) =>
 const mapDispatchToProps = {
     fetchCurrencyService,
     postTodoService,
-    getTodoService
+    getTodoService,
+    // incrementService
 }
 
 //export default withHoc(prop1, func)(withRouter(connect(mapStateToProps)(Home)));
