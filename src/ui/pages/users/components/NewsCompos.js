@@ -92,7 +92,7 @@ const NewsCard = ({ item, saverMode }) => {
         >
             <div className={'pure-g'}>
                 <div className={'pure-u-1-3'}>
-                    {saverMode ? null : <ImageWrapper {...item} />}
+                    {saverMode ? <ImageWrapper /> : <ImageWrapper {...item} />}
                 </div>
                 <div className={'pure-u-2-3'}>
                     <NewsWrapper {...item} />

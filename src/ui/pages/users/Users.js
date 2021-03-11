@@ -262,7 +262,7 @@ class Users extends React.Component {
                         key={item.guid}
                     >
                         <div>
-                            {saverMode ? null : <ImageWrapper {...item} />}
+                            {saverMode ? <ImageWrapper /> : <ImageWrapper {...item} />}
                         </div>
                         <div>
                             <NewsWrapper {...item} />
